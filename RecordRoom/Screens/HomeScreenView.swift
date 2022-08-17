@@ -29,6 +29,7 @@ struct Song : Hashable {
 
 struct HomeScreenView: View {
     @ObservedObject var data: OurData
+    @AppStorage("isDarkMode") var isDarkMode: Bool = true
     @State var searchText = ""
     @State var offset: CGFloat = 0
     @State var lastOffset: CGFloat = 0
@@ -38,6 +39,7 @@ struct HomeScreenView: View {
     @State var albumId = ""
     
     @State private var genreSearch: String? = "All"
+
     
     var body: some View {
         NavigationView{
@@ -58,15 +60,22 @@ struct HomeScreenView: View {
                                     .padding(.leading)
                                 TextField("", text: $searchText)
                                     .foregroundColor(.white)
-                                ZStack{
-                                RoundedRectangle(cornerRadius: 7, style: .continuous)
-                                       .fill(Color("CustomRed"))
-                                       .frame(width: metrics.size.width/3.8, height: 35)
-                                    Text("Search")
-                                        .font(.title2)
-                                        .foregroundColor(.white)
-                                }//zstack
-                                .padding(.trailing,5)
+                                
+                                
+                                    ZStack{
+                                    RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                           .fill(Color("CustomRed"))
+                                           .frame(width: metrics.size.width/3.8, height: 35)
+                                        Text("Search")
+                                            .font(.title2)
+                                            .foregroundColor(.white)
+                                    }//zstack
+                                    .padding(.trailing,5)
+                                    .onTapGesture{
+                                        genreSearch = "Search"
+                                    }
+                                
+                                
                             }//hstack
                         }//zstack
                         .frame(width: metrics.size.width/1.3, height: 50)
@@ -100,11 +109,18 @@ struct HomeScreenView: View {
                                 .onTapGesture{
                                 genreSearch = "Rock"
                                 }
-                            GenreCards(image: "RecordPlate", genre: "Metal")
+                            GenreCards(image: "RecordPlate", genre: "Country")
                                 .onTapGesture{
-                                genreSearch = "Metal"
+                                genreSearch = "Country"
                                 }
-                                
+                            GenreCards(image: "RecordPlate", genre: "HipHop")
+                                .onTapGesture{
+                                genreSearch = "HipHop"
+                                }
+                            GenreCards(image: "RecordPlate", genre: "Electronic")
+                                .onTapGesture{
+                                genreSearch = "Electronic"
+                                }
                             
                         }//hstack
                     }//scrollview genre
@@ -189,8 +205,51 @@ struct HomeScreenView: View {
                                             }//album
                                             }//vstack
                                         }//if album
+                                    }else if genreSearch == "Country"{
+                                        if album.genre == "Country"{
+                                            VStack{
+                                            AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
+                                            self.albumId = album.albumid
+                                            self.currentAlbum = album
+                                            self.currentSong = album.songs[0]
+                                                
+                                            }//album
+                                            }//vstack
+                                        }//if album
+                                    }else if genreSearch == "HipHop"{
+                                        if album.genre == "HipHop"{
+                                            VStack{
+                                            AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
+                                            self.albumId = album.albumid
+                                            self.currentAlbum = album
+                                            self.currentSong = album.songs[0]
+                                                
+                                            }//album
+                                            }//vstack
+                                        }//if album
+                                    }else if genreSearch == "Electronic"{
+                                        if album.genre == "Electronic"{
+                                            VStack{
+                                            AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
+                                            self.albumId = album.albumid
+                                            self.currentAlbum = album
+                                            self.currentSong = album.songs[0]
+                                                
+                                            }//album
+                                            }//vstack
+                                        }//if album
+                                    }else if genreSearch == "Search"{
+                                        if album.name == searchText{
+                                            VStack{
+                                            AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
+                                            self.albumId = album.albumid
+                                            self.currentAlbum = album
+                                            self.currentSong = album.songs[0]
+                                                
+                                            }//album
+                                            }//vstack
+                                        }//if album
                                     }
-                                     
                                     
                                     
                                 
@@ -215,8 +274,7 @@ struct HomeScreenView: View {
                     
                     return AnyView(
                         ZStack{
-                            BlurView(style:
-                                    .systemThinMaterialDark)
+                            BlurView(style: .systemThinMaterial)
                             .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 30))
                             
                             VStack{
@@ -495,12 +553,12 @@ struct SongCell: View{
                     Text(song.name)
                         .font(.custom("BebasNeue", size: metrics.size.width/20))
                         .padding([.leading,.trailing])
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("DarkLightMode"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(album.name)
                         .font(.custom("BebasNeue", size: metrics.size.width/30))
                         .padding([.leading,.trailing])
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("DarkLightMode"))
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                 }
@@ -508,7 +566,7 @@ struct SongCell: View{
                 Text(song.time)
                     .font(.custom("BebasNeue", size: metrics.size.width/20))
                     .padding([.leading,.trailing])
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("DarkLightMode"))
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 
                 }
