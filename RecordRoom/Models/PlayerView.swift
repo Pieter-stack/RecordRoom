@@ -5,13 +5,19 @@
 //  Created by Pieter Venter on 2022/08/14.
 //
 import SwiftUI
+import Firebase
+import AVFoundation
 
 
 struct PlayerView: View {
-   var album: Album
-   var song: Song
-   // @State var progress: CGFloat = 0.0
+    @State var album: Album
+    @State var song: Song
+    @State var player = AVPlayer()
+    @State var seekPos = 0.0
     @State var isPlaying: Bool = false
+
+    
+    
     var body: some View {
         GeometryReader{metrics in
             VStack{
@@ -54,7 +60,7 @@ struct PlayerView: View {
                 .padding(.bottom,50)
                 .padding(.top,-40)
                
-                Text("2:13")
+                Text(song.time)
                     .font(.custom("BebasNeue", size: metrics.size.width/17))
                     .foregroundColor(Color("DarkLightMode"))
                     .opacity(0.7)
@@ -91,19 +97,64 @@ struct PlayerView: View {
             .padding(.top,20)
             
         }//georeader
+        .onAppear(){
+            self.playSong()
+        }
     }
+    
+    func playSong(){
+        let storage = Storage.storage().reference(forURL: self.song.file)
+        storage.downloadURL{(url,error)in
+            if error != nil{
+                print(error)
+            }else{
+                
+                do{
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                }catch{
+                    //error
+                }
+              player = AVPlayer(playerItem: AVPlayerItem(url: url!))
+                player.play()
+            }
+            
+        }
+    }
+    
+
     
     
     func playPause() {
         self.isPlaying.toggle()
+        if isPlaying == false{
+            player.pause()
+        }else{
+            player.play()
+        }
     }
     
     func next() {
+        if let currentIndex = album.songs.firstIndex(of: song){
+            if currentIndex == album.songs.count + 1{
+
+            }
+            else{
+                 song = album.songs[currentIndex + 1]
+            }
+
+       }
         
     }
     
     func previous() {
-        
+        if let currentIndex = album.songs.firstIndex(of: song){
+            if currentIndex == 0{
+
+            }else{
+                song = album.songs[currentIndex - 1]
+            }
+
+        }
     }
     
 }

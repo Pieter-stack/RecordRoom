@@ -25,6 +25,7 @@ struct Song : Hashable {
     var name: String
     var time: String
     var genre: String
+    var file: String
 }
 
 struct HomeScreenView: View {
@@ -37,7 +38,8 @@ struct HomeScreenView: View {
     @State private var currentAlbum : Album?
     @State private var currentSong : Song?
     @State var albumId = ""
-    
+    @State var albumname = ""
+    @State var songname = ""
     @State private var genreSearch: String? = "All"
 
     
@@ -101,6 +103,10 @@ struct HomeScreenView: View {
                     
                     ScrollView(.horizontal){
                         HStack{
+                            GenreCards(image: "RecordPlate", genre: "All")
+                                .onTapGesture{
+                                genreSearch = "All"
+                                }
                             GenreCards(image: "RecordPlate", genre: "Pop")
                                 .onTapGesture{
                                 genreSearch = "Pop"
@@ -177,6 +183,7 @@ struct HomeScreenView: View {
                                         VStack{
                                         AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
                                         self.albumId = album.albumid
+                                            self.albumname = album.name
                                         self.currentAlbum = album
                                         self.currentSong = album.songs[0]
                                         }
@@ -187,6 +194,7 @@ struct HomeScreenView: View {
                                             VStack{
                                             AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
                                             self.albumId = album.albumid
+                                                self.albumname = album.name
                                             self.currentAlbum = album
                                             self.currentSong = album.songs[0]
                                                 
@@ -199,6 +207,7 @@ struct HomeScreenView: View {
                                             VStack{
                                             AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
                                             self.albumId = album.albumid
+                                                self.albumname = album.name
                                             self.currentAlbum = album
                                             self.currentSong = album.songs[0]
                                                 
@@ -210,6 +219,7 @@ struct HomeScreenView: View {
                                             VStack{
                                             AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
                                             self.albumId = album.albumid
+                                                self.albumname = album.name
                                             self.currentAlbum = album
                                             self.currentSong = album.songs[0]
                                                 
@@ -221,6 +231,7 @@ struct HomeScreenView: View {
                                             VStack{
                                             AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
                                             self.albumId = album.albumid
+                                                self.albumname = album.name
                                             self.currentAlbum = album
                                             self.currentSong = album.songs[0]
                                                 
@@ -232,6 +243,7 @@ struct HomeScreenView: View {
                                             VStack{
                                             AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
                                             self.albumId = album.albumid
+                                                self.albumname = album.name
                                             self.currentAlbum = album
                                             self.currentSong = album.songs[0]
                                                 
@@ -243,6 +255,7 @@ struct HomeScreenView: View {
                                             VStack{
                                             AlbumLibrary(album: album, albumId: self.$albumId).onTapGesture {
                                             self.albumId = album.albumid
+                                                self.albumname = album.name
                                             self.currentAlbum = album
                                             self.currentSong = album.songs[0]
                                                 
@@ -261,9 +274,17 @@ struct HomeScreenView: View {
                         
                         
                     }//scrollview lib
-                    
+                    if currentSong == nil{
+                        EmptyView()
+                    }else{
+                        CurrentSong(song: self.currentSong ?? Song(name: "", time: "", genre: "", file: ""), album: currentAlbum ?? Album(albumid: "", name: "", image: "", genre: "", fav: false, songs: [Song(name: "", time: "", genre: "", file: "")]))
+                        .frame(width: metrics.size.width, height: 50, alignment: .bottom)
+                        .padding(.bottom, 60)
+                    }
 
                 }//vstack
+                
+
                 
                 //Bottom sheet
                 
@@ -283,19 +304,32 @@ struct HomeScreenView: View {
                                     .frame(width: 120, height: 8)
                                     .padding(.top)
                                 
-                                if self.data.albums.first == nil {
-                                    EmptyView()
-                                }else{
-                                PlayerView(album: self.currentAlbum ?? self.data.albums.first!, song: self.currentSong ?? Song(name: "Test", time: "Test", genre: "Test"))
-                                }
+                                Text(albumname)
+                                    .font(.custom("BebasNeue", size: metrics.size.width/10))
+                                    .foregroundColor(Color("DarkLightMode"))
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding()
+                                    .padding(.top,10)
+                                
+                                Text("Songs List")
+                                    .font(.custom("Montserrat-Regular", size: metrics.size.width/25))
+                                    .foregroundColor(Color("DarkLightMode"))
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.top,-20)
+                                
+//                                if self.data.albums.first == nil {
+//                                    EmptyView()
+//                                }else{
+                               // PlayerView(album: self.currentAlbum ?? self.data.albums.first!, song: self.currentSong ?? Song(name: "", time: "", genre: "", file: "gs://musicapp-204eb.appspot.com/songs/"))
+//
+//                                }
                             
                                 ScrollView{
                                     if self.data.albums.first == nil {
                                         EmptyView()
                                     }else{
-                                        ForEach((self.currentAlbum?.songs ?? self.data.albums.first?.songs) ?? [Song(name: "Song 1", time: "2:13", genre: "Pop")], id:\.self, content:{song in
+                                        ForEach((self.currentAlbum?.songs ?? self.data.albums.first?.songs) ?? [Song(name: "Song 1", time: "2:13", genre: "Pop",file: "")], id:\.self, content:{song in
                                         
-                                       
                                         
                                             SongCell(song:song, album: self.currentAlbum ?? self.data.albums.first!)
                                             .onTapGesture {
@@ -309,7 +343,7 @@ struct HomeScreenView: View {
                                     }
    
                                 }//scrollview
-                                .frame(width: .infinity, height: 230, alignment: .bottom)
+                                //.frame(width: .infinity, height: 230, alignment: .bottom)
                                
                                
                                 
@@ -503,11 +537,13 @@ struct SongCell: View{
     var body: some View{
      
             
-        
+        NavigationLink(destination: PlayerView(album: album, song: song)) {
         GeometryReader{metrics in
             
             
         ZStack{
+           
+              
             
 
         
@@ -582,6 +618,7 @@ struct SongCell: View{
 
             
         }//geo reader
+        }
     
     }
 }
@@ -643,7 +680,7 @@ struct CurrentSong: View{
                     .resizable()
                     .frame(width: 60, height: 60)
                     
-                    Image("RecordPlate")
+                    Image(album.image)
                         .resizable()
                         .frame(width: 22, height: 22)
                 }//zstack
@@ -652,29 +689,23 @@ struct CurrentSong: View{
                     Text(song.name)
                         .font(.custom("BebasNeue", size: metrics.size.width/20))
                         .padding([.leading,.trailing])
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("DarkLightMode"))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(song.time)
+                    Text(album.name)
                         .font(.custom("BebasNeue", size: metrics.size.width/30))
                         .padding([.leading,.trailing])
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("DarkLightMode"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top,-20)
                 }
                 
                 HStack{
-                    Image(systemName: "backward.fill")
-                        .resizable()
-                        .frame(width: 29, height: 19)
-                        .foregroundColor(Color("CustomBlue"))
-                    Image(systemName: "play.fill")
-                        .resizable()
-                        .frame(width: 19, height: 19)
-                        .foregroundColor(Color("CustomBlue"))
-                    Image(systemName: "forward.fill")
-                        .resizable()
-                        .frame(width: 29, height: 19)
-                        .foregroundColor(Color("CustomBlue"))
+                    Text(song.time)
+                        .font(.custom("BebasNeue", size: metrics.size.width/20))
+                        .padding([.leading,.trailing])
+                        .foregroundColor(Color("DarkLightMode"))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        
                 }
                 .padding(.trailing, 29)
                 

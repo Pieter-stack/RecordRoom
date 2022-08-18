@@ -33,7 +33,8 @@ class OurData : ObservableObject{
                             let songName = song.value["name"] as? String ?? "error"
                             let songTime = song.value["time"] as? String ?? "error"
                             let songGenre = song.value["genre"] as? String ?? "error"
-                            songsArray.append(Song(name: songName, time: songTime, genre: songGenre))
+                            let songFile = song.value["file"] as? String ?? "error"
+                            songsArray.append(Song(name: songName, time: songTime, genre: songGenre, file: songFile))
                         }
                     }
                     self.albums.append(Album( albumid: albumid, name: name, image: image, genre: genre, fav: fav, songs: songsArray))
