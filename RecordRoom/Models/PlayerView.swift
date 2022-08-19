@@ -148,10 +148,8 @@ struct PlayerView: View {
     
     func playPause() {
         self.isPlaying.toggle()
-        if isPlaying == false{
+        if isPlaying == true{
             player.pause()
-        }else{
-            player.play()
             _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
                        withAnimation() {
                            self.progress += 0.001
@@ -160,16 +158,21 @@ struct PlayerView: View {
                            }
                        }
                    }
+        
+        }else{
+            player.play()
         }
     }
     
     func next() {
         if let currentIndex = album.songs.firstIndex(of: song){
-            if currentIndex == album.songs.count + 1{
+            if currentIndex == album.songs.count - 1{
 
             }
             else{
+                player.pause()
                  song = album.songs[currentIndex + 1]
+                self.playSong()
             }
 
        }
@@ -181,7 +184,9 @@ struct PlayerView: View {
             if currentIndex == 0{
 
             }else{
+                player.pause()
                 song = album.songs[currentIndex - 1]
+                self.playSong()
             }
 
         }
