@@ -23,7 +23,6 @@
 		67101DC628A6D03B00F08859 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67101DC528A6D03B00F08859 /* CustomCorner.swift */; };
 		67101DC828A7962E00F08859 /* GenreCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67101DC728A7962E00F08859 /* GenreCards.swift */; };
 		67101DCA28A7964700F08859 /* FavouriteCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67101DC928A7964700F08859 /* FavouriteCards.swift */; };
-		67101DCC28A7965500F08859 /* LibraryCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67101DCB28A7965500F08859 /* LibraryCards.swift */; };
 		672D27CF28A92D9E002094F9 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672D27CE28A92D9E002094F9 /* PlayerView.swift */; };
 		672D27D128A98F5C002094F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 672D27D028A98F5C002094F9 /* GoogleService-Info.plist */; };
 		672D27D328A99A4C002094F9 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672D27D228A99A4C002094F9 /* Data.swift */; };
@@ -51,7 +50,6 @@
 		67101DC528A6D03B00F08859 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
 		67101DC728A7962E00F08859 /* GenreCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCards.swift; sourceTree = "<group>"; };
 		67101DC928A7964700F08859 /* FavouriteCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCards.swift; sourceTree = "<group>"; };
-		67101DCB28A7965500F08859 /* LibraryCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCards.swift; sourceTree = "<group>"; };
 		672D27CE28A92D9E002094F9 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		672D27D028A98F5C002094F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		672D27D228A99A4C002094F9 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				67101DBF28A6940B00F08859 /* BoardingScreen.swift */,
 				67101DC728A7962E00F08859 /* GenreCards.swift */,
 				67101DC928A7964700F08859 /* FavouriteCards.swift */,
-				67101DCB28A7965500F08859 /* LibraryCards.swift */,
 				672D27CE28A92D9E002094F9 /* PlayerView.swift */,
 			);
 			path = Models;
@@ -310,7 +307,6 @@
 			files = (
 				67101DBC28A67F1A00F08859 /* SplashbottomCapsule.swift in Sources */,
 				67101DB828A67EC300F08859 /* SettingsScreenView.swift in Sources */,
-				67101DCC28A7965500F08859 /* LibraryCards.swift in Sources */,
 				67101DC228A6966F00F08859 /* OffsetPageTabView.swift in Sources */,
 				672D27CF28A92D9E002094F9 /* PlayerView.swift in Sources */,
 				67101DBA28A67ED100F08859 /* OnboardingScreenView.swift in Sources */,

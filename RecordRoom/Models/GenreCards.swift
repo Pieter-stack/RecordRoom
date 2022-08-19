@@ -23,6 +23,7 @@ struct GenreCards: View {
                 Image(image)
                     .resizable()
                     .frame(width: 100, height: 100)
+                    .cornerRadius(15)
                     
             
             }//zstack

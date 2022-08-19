@@ -15,12 +15,30 @@ struct PlayerView: View {
     @State var player = AVPlayer()
     @State var seekPos = 0.0
     @State var isPlaying: Bool = false
+    @State var progress: CGFloat = 0.0
+    @Environment(\.presentationMode) var presentationMode
+    @AppStorage("isDarkMode") var isDarkMode: Bool = true
 
     
     
     var body: some View {
         GeometryReader{metrics in
+            ZStack{
+                Color("CustomDark")
+                    .ignoresSafeArea()
+            }
+            
             VStack{
+                Button{
+                    presentationMode.wrappedValue.dismiss()
+                }label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(Color(isDarkMode ? .white : .black))
+                        .font(.system(size: 35, weight: .bold))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                }
+                
                 Text(song.name)
                     .font(.custom("BebasNeue", size: metrics.size.width/5))
                     .foregroundColor(Color("DarkLightMode"))
@@ -41,6 +59,7 @@ struct PlayerView: View {
                         Image(album.image)
                             .resizable()
                             .frame(width: metrics.size.width/3, height: metrics.size.width/3)
+                            .cornerRadius(metrics.size.width*1.6)
                             
                     }//zstack
                     Circle()
@@ -49,7 +68,7 @@ struct PlayerView: View {
                         .frame(width: metrics.size.width, height: metrics.size.width - 110)
                     
                     Circle()
-                        .trim(from: 0.0, to: 0.3)
+                        .trim(from: 0.0, to: progress / 2)
                         .stroke(Color("CustomRed"), style: StrokeStyle(lineWidth: 10, lineCap: .round))
                         .frame(width: metrics.size.width, height: metrics.size.width - 110)
                         .rotationEffect(.degrees(270))
@@ -60,7 +79,7 @@ struct PlayerView: View {
                 .padding(.bottom,50)
                 .padding(.top,-40)
                
-                Text(song.time)
+                Text("")
                     .font(.custom("BebasNeue", size: metrics.size.width/17))
                     .foregroundColor(Color("DarkLightMode"))
                     .opacity(0.7)
@@ -94,9 +113,11 @@ struct PlayerView: View {
                 
                 
             }//vstack
-            .padding(.top,20)
-            
+           
+
         }//georeader
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         .onAppear(){
             self.playSong()
         }
@@ -114,15 +135,16 @@ struct PlayerView: View {
                 }catch{
                     //error
                 }
+                
+                
               player = AVPlayer(playerItem: AVPlayerItem(url: url!))
                 player.play()
+                
             }
             
         }
     }
-    
 
-    
     
     func playPause() {
         self.isPlaying.toggle()
@@ -130,6 +152,14 @@ struct PlayerView: View {
             player.pause()
         }else{
             player.play()
+            _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                       withAnimation() {
+                           self.progress += 0.001
+                           if self.progress >= 1.0 {
+                               timer.invalidate()
+                           }
+                       }
+                   }
         }
     }
     

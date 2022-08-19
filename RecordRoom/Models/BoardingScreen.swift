@@ -17,9 +17,9 @@ struct BoardingScreen: Identifiable {
 
 var boardingScreens: [BoardingScreen] = [
 
-BoardingScreen(image: "Headphones", backgroundimage: "BackgroundOne", title: "One", description: "One Omne"),
-BoardingScreen(image: "Record", backgroundimage: "BackgroundTwo", title: "Two", description: "Two Two"),
-BoardingScreen(image: "Search", backgroundimage: "BackgroundThree", title: "Three", description: "Three Three")
+BoardingScreen(image: "Headphones", backgroundimage: "BackgroundOne", title: "Enjoy Your Music", description: "Enjoy quality audio, to make your listening experience better!"),
+BoardingScreen(image: "Record", backgroundimage: "BackgroundTwo", title: "Put Your Records On", description: "With Record Room you can listen to your favourite artists songs and albums all in one place!"),
+BoardingScreen(image: "Search", backgroundimage: "BackgroundThree", title: "Explore", description: "Searching for albums has never been quicker and easier with Record Room.")
 
 
 

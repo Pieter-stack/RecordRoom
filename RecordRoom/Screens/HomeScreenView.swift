@@ -103,27 +103,27 @@ struct HomeScreenView: View {
                     
                     ScrollView(.horizontal){
                         HStack{
-                            GenreCards(image: "RecordPlate", genre: "All")
+                            GenreCards(image: "ALL", genre: "All")
                                 .onTapGesture{
                                 genreSearch = "All"
                                 }
-                            GenreCards(image: "RecordPlate", genre: "Pop")
+                            GenreCards(image: "POP", genre: "Pop")
                                 .onTapGesture{
                                 genreSearch = "Pop"
                                 }
-                            GenreCards(image: "RecordPlate", genre: "Rock")
+                            GenreCards(image: "ROCK", genre: "Rock")
                                 .onTapGesture{
                                 genreSearch = "Rock"
                                 }
-                            GenreCards(image: "RecordPlate", genre: "Country")
+                            GenreCards(image: "COUNTRY", genre: "Country")
                                 .onTapGesture{
                                 genreSearch = "Country"
                                 }
-                            GenreCards(image: "RecordPlate", genre: "HipHop")
+                            GenreCards(image: "HIPHOP", genre: "HipHop")
                                 .onTapGesture{
                                 genreSearch = "HipHop"
                                 }
-                            GenreCards(image: "RecordPlate", genre: "Electronic")
+                            GenreCards(image: "ELECTRONIC", genre: "Electronic")
                                 .onTapGesture{
                                 genreSearch = "Electronic"
                                 }
@@ -132,10 +132,6 @@ struct HomeScreenView: View {
                     }//scrollview genre
                     .padding(.top,-20)
 
-                    
-                  
-                    
-                    
                     Text("Favourites")
                         .font(.custom("Montserrat-Regular", size: metrics.size.width/20))
                         .foregroundColor(Color("DarkLightMode"))
@@ -152,9 +148,7 @@ struct HomeScreenView: View {
                                     
                                 }
                                 }
-                                    
                            })
-                            
                         }//hstack
                     }//scrollview fav
                     .padding(.top,-20)
@@ -200,6 +194,7 @@ struct HomeScreenView: View {
                                                 
                                             }//album
                                             }//vstack
+                                            .padding(.bottom,150)
                                         }//if album
                                         
                                     }else if genreSearch == "Rock"{
@@ -213,6 +208,7 @@ struct HomeScreenView: View {
                                                 
                                             }//album
                                             }//vstack
+                                            .padding(.bottom,150)
                                         }//if album
                                     }else if genreSearch == "Country"{
                                         if album.genre == "Country"{
@@ -225,6 +221,7 @@ struct HomeScreenView: View {
                                                 
                                             }//album
                                             }//vstack
+                                            .padding(.bottom,150)
                                         }//if album
                                     }else if genreSearch == "HipHop"{
                                         if album.genre == "HipHop"{
@@ -237,6 +234,7 @@ struct HomeScreenView: View {
                                                 
                                             }//album
                                             }//vstack
+                                            .padding(.bottom,150)
                                         }//if album
                                     }else if genreSearch == "Electronic"{
                                         if album.genre == "Electronic"{
@@ -249,6 +247,7 @@ struct HomeScreenView: View {
                                                 
                                             }//album
                                             }//vstack
+                                            .padding(.bottom,150)
                                         }//if album
                                     }else if genreSearch == "Search"{
                                         if album.name == searchText{
@@ -261,33 +260,14 @@ struct HomeScreenView: View {
                                                 
                                             }//album
                                             }//vstack
+                                            .padding(.bottom,150)
                                         }//if album
                                     }
-                                    
-                                    
-                                
-                                
                            })
-                           
                         }//vstack
-                        
-                        
-                        
                     }//scrollview lib
-                    if currentSong == nil{
-                        EmptyView()
-                    }else{
-                        CurrentSong(song: self.currentSong ?? Song(name: "", time: "", genre: "", file: ""), album: currentAlbum ?? Album(albumid: "", name: "", image: "", genre: "", fav: false, songs: [Song(name: "", time: "", genre: "", file: "")]))
-                        .frame(width: metrics.size.width, height: 50, alignment: .bottom)
-                        .padding(.bottom, 60)
-                    }
-
                 }//vstack
-                
-
-                
                 //Bottom sheet
-                
                 //for getting height for drag gesture
                 GeometryReader{proxy -> AnyView in
                     
@@ -316,14 +296,6 @@ struct HomeScreenView: View {
                                     .foregroundColor(Color("DarkLightMode"))
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .padding(.top,-20)
-                                
-//                                if self.data.albums.first == nil {
-//                                    EmptyView()
-//                                }else{
-                               // PlayerView(album: self.currentAlbum ?? self.data.albums.first!, song: self.currentSong ?? Song(name: "", time: "", genre: "", file: "gs://musicapp-204eb.appspot.com/songs/"))
-//
-//                                }
-                            
                                 ScrollView{
                                     if self.data.albums.first == nil {
                                         EmptyView()
@@ -336,18 +308,11 @@ struct HomeScreenView: View {
                                                 self.currentSong = song
                                             }
                                             .padding(.bottom,60)
-                                        
                                     })
                                     .padding(.trailing)
                                     //.padding(.bottom,100)
                                     }
-   
                                 }//scrollview
-                                //.frame(width: .infinity, height: 230, alignment: .bottom)
-                               
-                               
-                                
-                                
                             }////vstack
                             .frame(maxHeight: .infinity, alignment: .top)
                         }//zstack
@@ -376,7 +341,6 @@ struct HomeScreenView: View {
                                         offset = 0
                                     }
                                 }
-                                
                                 //storing last offset value
                                 lastOffset = offset
                                 
@@ -384,13 +348,6 @@ struct HomeScreenView: View {
                     )//anyview
                 }//geo reader
                 .ignoresSafeArea(.all, edges: .bottom)
-                
-           
-                
-                
-                
-                
-                
             }//geo reader
         }//zstack
         .navigationBarBackButtonHidden(true)
@@ -406,10 +363,6 @@ struct HomeScreenView: View {
             self.offset =  gestureOffset + lastOffset
         }
     }
-    
-    
-    
-    
 }
 
 struct AlbumLibrary: View{
@@ -514,22 +467,11 @@ struct AlbumLibrary: View{
                     }//hstack
                 }//vstack
             }//hstack
-            
-
-            
-            
         }//zstack
-           
     }//geo reader
-        
-       
     }
-    
-
     }
-    
 }
-
 
 struct SongCell: View{
     var song : Song
@@ -539,14 +481,7 @@ struct SongCell: View{
             
         NavigationLink(destination: PlayerView(album: album, song: song)) {
         GeometryReader{metrics in
-            
-            
         ZStack{
-           
-              
-            
-
-        
             Rectangle()
                 .foregroundColor(Color("CustomRed"))
                 .frame(width: metrics.size.width - 20, height: 70)
@@ -569,20 +504,17 @@ struct SongCell: View{
                                 .cornerRadius(5)
                                 .padding(.leading, -5)
                                 .padding(.bottom,7)
-                                .blendMode(.destinationOut)                                )
-                    
-              
-                )
-            
+                                .blendMode(.destinationOut)))
             HStack{
                 ZStack{
                 Image("RecordPlate")
                     .resizable()
                     .frame(width: 60, height: 60)
                     
-                    Image("RecordPlate")
+                    Image(album.image)
                         .resizable()
                         .frame(width: 22, height: 22)
+                        .cornerRadius(30)
                 }//zstack
                 .padding(.leading,10)
                 VStack{
@@ -606,125 +538,13 @@ struct SongCell: View{
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 
                 }
-                
             }//hstack
-
-            
-            
         }//zstack
         .padding(.leading,10)
-            
-
-
-            
         }//geo reader
         }
-    
     }
 }
-
-
-struct CurrentSong: View{
-    var song : Song
-    var album : Album
-    var body: some View{
-     
-            
-        
-        GeometryReader{metrics in
-            
-            
-        ZStack{
-            
-            Rectangle()
-                .foregroundColor(Color("CustomBlue"))
-                .frame(width: metrics.size.width - 20, height: 70)
-                .padding(.trailing, 35)
-                .cornerRadius(35)
-                .padding(.trailing, -35)
-                .padding(.leading, 5)
-                .cornerRadius(5)
-                .padding(.leading, -5)
-                .opacity(0.7)
-        
-            Rectangle()
-                .foregroundColor(Color("CustomRed"))
-                .frame(width: metrics.size.width - 20, height: 70)
-                .padding(.trailing, 35)
-                .cornerRadius(35)
-                .padding(.trailing, -35)
-                .padding(.leading, 5)
-                .cornerRadius(5)
-                .padding(.leading, -5)
-                .mask(
-                    Rectangle()
-                        .overlay(
-                            Rectangle()
-                                .foregroundColor(Color("CustomBlue"))
-                                .frame(width: metrics.size.width - 20, height: 70)
-                                .padding(.trailing, 35)
-                                .cornerRadius(35)
-                                .padding(.trailing, -35)
-                                .padding(.leading, 5)
-                                .cornerRadius(5)
-                                .padding(.leading, -5)
-                                .padding(.bottom,7)
-                                .blendMode(.destinationOut)                                )
-                    
-              
-                )
-            
-            HStack{
-                ZStack{
-                Image("RecordPlate")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    
-                    Image(album.image)
-                        .resizable()
-                        .frame(width: 22, height: 22)
-                }//zstack
-                .padding(.leading,10)
-                VStack{
-                    Text(song.name)
-                        .font(.custom("BebasNeue", size: metrics.size.width/20))
-                        .padding([.leading,.trailing])
-                        .foregroundColor(Color("DarkLightMode"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(album.name)
-                        .font(.custom("BebasNeue", size: metrics.size.width/30))
-                        .padding([.leading,.trailing])
-                        .foregroundColor(Color("DarkLightMode"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.top,-20)
-                }
-                
-                HStack{
-                    Text(song.time)
-                        .font(.custom("BebasNeue", size: metrics.size.width/20))
-                        .padding([.leading,.trailing])
-                        .foregroundColor(Color("DarkLightMode"))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        
-                }
-                .padding(.trailing, 29)
-                
-                
-            }//hstack
-
-            
-            
-        }//zstack
-        .padding(.leading,10)
-            
-
-
-            
-        }//geo reader
-    
-    }
-}
-
 
 
 struct HomeScreenView_Previews: PreviewProvider {

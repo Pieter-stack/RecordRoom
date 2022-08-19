@@ -71,8 +71,6 @@ struct SplashScreenView: View {
                                         SplashtopCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashtopCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashtopCapsule(height:CGFloat.random(in: 70..<150))
-                                        
-                                        
                                     }
                                     HStack{
                                         SplashtopCapsule(height:CGFloat.random(in: 70..<150))
@@ -96,8 +94,6 @@ struct SplashScreenView: View {
                                 
                                 if device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini"{
                                     Spacer()
-                                    
-                                    
                                     HStack{
                                         Spacer()
                                     Text("RR")
@@ -120,13 +116,10 @@ struct SplashScreenView: View {
                                         self.opacity = 1
                                         }
                                     }
-                                    
                                     Spacer()
                                     
                                 }else{
                                     Spacer()
-                                    
-                                    
                                     HStack{
                                     Text("RR")
                                         .foregroundColor(Color("DarkLightMode"))
@@ -150,10 +143,6 @@ struct SplashScreenView: View {
                                     
                                     Spacer()
                                 }
-                                
-                                
-                                
-                              
                                 HStack{
                                 HStack{
                                     SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
@@ -173,12 +162,6 @@ struct SplashScreenView: View {
                                     HStack{
 
                                         SplashbottomCapsule(height: animate ? 60 : CGFloat.random(in: 70..<150))
-                                           // .onAppear {
-                                            //    withAnimation(.easeIn(duration: 1.0).repeatForever(autoreverses: true)) {
-                                            //        self.animate.toggle()
-                                            //    }
-                                          //  }
-                                            
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
@@ -188,16 +171,12 @@ struct SplashScreenView: View {
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
-                                        
-                                        
                                     }
                                     HStack{
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
                                         SplashbottomCapsule(height:CGFloat.random(in: 70..<150))
-                                        
-                                        
                                     }
                                 }
                                 .padding(.bottom,-60)
@@ -215,12 +194,7 @@ struct SplashScreenView: View {
                     }
                         }
         .preferredColorScheme(isDarkMode ? .dark : .light)
-                
-                
-
         }
-        
-       
     }
 
 
