@@ -17,7 +17,8 @@
   <h3 align="center">RecordRoom</h3>
 
   <p align="center">
-    RecordRoom small description
+    A fun retro-looking music app coming your way! Record Room is a music player application. With a few clicks and swipes you will be able to search, pause, play, forward and rewind your favourite music, anytime and anywhere.
+Add albums to your favourites, have a detailed album view and toggle between lightmode and darkmode! 
 <br>
       <a href="https://github.com/Pieter-stack/RecordRoom"><strong>Explore the docs »</strong></a>
       <br />
@@ -66,7 +67,15 @@
 ![image1][image1]
 
 ### Project Description
-RecordRoom long description
+This app is designed and developed to play music. It allows the user to interact with the typical music player features like; pause, play, rewind & forward songs. Record Room gives the user the ability to search for albums and also to filter through it by genre. 
+
+Record Room also offers other music player functions like adding albums you like to your favourites, easier access to your favourite songs that have been added to your “Favourite Playlist”. The app showcases all the artists songs in one of their albums which allows the user to have a detailed album view. 
+
+Record Room has a settings page that gives the user a short description of the app and who the Developer is. Also on the settings page is a button that allows the user to toggle between the option of Lightmode or Darkmode. 
+
+Lastly Record Room combines a bit of the retro-looking theme with 21st century modern and sleek theme to give a new overall appealing aesthetic differentiating it from all of the other music player apps out there. 
+
+
 
 ### Built With
 
@@ -108,33 +117,34 @@ Choose simulator and press play button in top left corner
 
 ### Features
 
-### Splash screen.
+### Song List.
 
-![image10][image10]
+![image2][image2]
 
-See the splash screen when you open up the app
+See a list of songs within each album
 
 ### Onboarding screens. 
 
-![image2][image2]
+![image6][image6]
 
 Onboarding experience for user to explain what the app offers
 
 ### Library screen.
 
-![image4][image4]
+![image7][image7]
 
 See a list of albums and favourite albums
 
 ### Play Music.
 
-![image3][image3]
+![image4][image4]
 
 Play pause, skip and rewind tracks
 
 ### Filter songs per album name or by genre.
 
-![image6][image6]
+
+![image3][image3]
 
 You can search for spesific albums or you can filter albums by genre
 
@@ -163,7 +173,7 @@ The `Conceptual Process` is the set of actions, activities and research that was
 
 ### Ideation
 
-![image7][image7]
+![image10][image10]
 
 ### Wireframes
 
@@ -247,7 +257,8 @@ Distributed under the MIT License. See `LICENSE` for more information.\
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
+* [Youtube Jared Davidson](https://www.youtube.com/c/Archetapp)
+* [Youtube Kavsoft](https://www.youtube.com/c/Kavsoft)
 * [Mockups](https://www.freepik.com)
 * [Lecturer](https://github.com/ArmandPret)
 
