@@ -23,7 +23,7 @@ Add albums to your favourites, have a detailed album view and toggle between lig
       <a href="https://github.com/Pieter-stack/RecordRoom"><strong>Explore the docs »</strong></a>
       <br />
       <br />
-      <a href="add video">View Demo</a>
+      <a href="https://youtu.be/_blh1WxuLOk">View Demo</a>
        ·
        <a href="https://github.com/Pieter-stack/RecordRoom/issues">Report Bug</a>
        ·
@@ -220,7 +220,7 @@ The `Development Process` is the technical implementations and functionality don
 
 To see the promotional video, click below:
 
-[View Promotional Video](https://www.youtube.com/watch?v=vvu9OxefnRk)
+[View Promotional Video](https://youtu.be/_blh1WxuLOk)
 
 <!-- ROADMAP -->
 ## Roadmap
