@@ -85,11 +85,11 @@ struct SplashScreenView: View {
                                 .padding(.top,-60)
 
                                 
-                                Button{
-                                    isOnboarding.toggle()
-                                }label:{
-                                    Text("Onboarding")
-                                }
+//                                Button{
+//                                    isOnboarding.toggle()
+//                                }label:{
+//                                    Text("Onboarding")
+//                                }
                                 
                                 
                                 if device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini"{
